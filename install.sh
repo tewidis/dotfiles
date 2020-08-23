@@ -6,3 +6,6 @@ sudo apt install cmake
 sudo apt install build-essential
 sudo apt install vlc
 sudo apt install curl
+sudo apt install mupdf
+sudo apt install texlive-full
+sudo apt install nodejs
