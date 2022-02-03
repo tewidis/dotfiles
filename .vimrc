@@ -2,10 +2,7 @@
 call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/altercation/vim-colors-solarized'
     Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'https://github.com/preservim/nerdtree'
-    Plug 'https://github.com/lyuts/vim-rtags'
     Plug 'https://github.com/mbbill/undotree'
-    Plug 'https://github.com/junegunn/fzf.vim'
 call plug#end()
 
 " set leader to space
@@ -35,13 +32,10 @@ set nowrap
 " case sensitive searching
 set smartcase
 
-" disable swap files
-set noswapfile
-
 " configure undoing
-set nobackup
 set undodir=~/.vim/undodir
 set undofile
+set backupdir=~/.vim/tmpdir
 
 " enable incremental search
 set incsearch
@@ -75,26 +69,11 @@ map <C-l> <C-w>l
 " share clipboard
 set clipboard=unnamed
 
-" disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
 " use solarized for colorscheme
 let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
 colorscheme solarized
-
-" Nerd tree
-map <leader>n :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-if has('nvim')
-    let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
-else
-    let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
-endif
 
 " undotree
 nnoremap <leader>u :UndotreeShow<CR>
