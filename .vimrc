@@ -1,8 +1,6 @@
 " enable plugins
 call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/altercation/vim-colors-solarized'
-    Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'https://github.com/mbbill/undotree'
 call plug#end()
 
 " set leader to space
@@ -31,6 +29,9 @@ set nowrap
 
 " case sensitive searching
 set smartcase
+
+" disable swap files
+" set noswapfile
 
 " configure undoing
 set undodir=~/.vim/undodir
@@ -74,30 +75,4 @@ let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
 colorscheme solarized
-
-" undotree
-nnoremap <leader>u :UndotreeShow<CR>
-
-" CoC
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-
-fun! GoCoc()
-    inoremap <buffer> <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ coc#refresh()
-
-    inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <buffer> <silent><expr> <C-space> coc#refresh()
-
-    " code navigation
-    nmap <leader>gd <Plug>(coc-definition)
-    nmap <leader>gy <Plug>(coc-type-defintion)
-    nmap <leader>gi <Plug>(coc-implementation)
-    nmap <leader>gr <Plug>(coc-references)
-    nnoremap <leader>cr :CocRestart
-endfun
 
